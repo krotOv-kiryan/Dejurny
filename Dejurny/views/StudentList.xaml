@@ -1,0 +1,44 @@
+﻿<Page x:Class="Dejurny.StudentList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Dejurny"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentList">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Margin="5 3 0 5">
+            <TextBlock Text="Список клиентов" DockPanel.Dock="Top"/>
+            <ListBox Grid.Column="0" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Background="LightGray" Padding="2" Margin="1"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1" LastChildFill="False" Margin="5 3 5 5">
+            <StackPanel DataContext="{Binding SelectedStudent}" DockPanel.Dock="Top">
+                <TextBlock Text="ФИО"/>
+                <TextBox Text="{Binding Name}"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+                <Button Content="История дежурств" Command="{Binding DejurLog}" Padding="5" Margin="0"/>
+                <Button Content="Продежурить" Command="{Binding MarkDate}" Padding="5" Margin="5 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top">
+                <Button Content="Создать" Command="{Binding CreateStudent}" Padding="5" Margin="0 5 5 0"/>
+                <Button Content="Сохранить" Command="{Binding SaveStudent}" Padding="5" Margin="0 5 5 0"/>
+                <!--<Button Content="Удалить" Command="{Binding RemoveStudent}" Padding="5" Margin="0 5 0 0"/>-->
+            </StackPanel>
+        </DockPanel>
+
+
+    </Grid>
+</Page>
