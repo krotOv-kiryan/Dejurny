@@ -6,6 +6,6 @@ namespace Dejurny
 {
     public interface IPage
     {
-        void SetVM(IPageVM vm);
+        void SetVM(IPageVM vm);//1
     }
 }
